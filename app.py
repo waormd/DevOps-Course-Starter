@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
+from item import Item
 import session_items as session
 import requests as r
 import yaml
@@ -52,7 +53,7 @@ def loadItems(secrets, lists):
     for item in lists:
         cards = loadCards(secrets, item['id'])
         for card in cards:
-            flattened.append({'id': card['id'], 'status': item['name'], 'title': card['name']})
+            flattened.append(Item(card['id'], item['name'], card['name']))
     return flattened
 
 
