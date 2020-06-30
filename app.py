@@ -26,7 +26,7 @@ def indexGet():
     lists = loadLists(secrets, TRELLO_BOARD_ID)
     return index(loadItems(secrets, lists))
 
-@app.route('/move', methods=['POST'])
+@app.route('/complete_item', methods=['POST'])
 def indexPut():
     cardId = request.form['cardId']
     target = request.form['target']
