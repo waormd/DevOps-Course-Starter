@@ -34,5 +34,23 @@ def test_done_items():
     view = ViewModel(example_items())
     assert view.done_items == example_done_items()
 
+def test_recent_done_items_shows_tasks_completed_today():
+    expectedItem = Item(3, 'Done', 'A Title', '2200-01-01T10:10:10.111Z')
+    view = ViewModel([
+        Item(0, 'Done', 'A Title', '1980-01-01T10:10:10.111Z'),
+        Item(1, 'Done', 'A Title', '1980-01-01T10:10:10.111Z'),
+        Item(2, 'Done', 'A Title', '1980-01-01T10:10:10.111Z'),
+        expectedItem
+    ])
+    assert view.recent_done_items == [expectedItem]
 
+def test_older_done_items_shows_tasks_completed_before_today():
+    expectedItem = Item(3, 'Done', 'A Title', '1980-01-01T10:10:10.111Z')
+    view = ViewModel([
+        Item(0, 'Done', 'A Title', '2200-01-01T10:10:10.111Z'),
+        Item(1, 'Done', 'A Title', '2200-01-01T10:10:10.111Z'),
+        Item(2, 'Done', 'A Title', '2200-01-01T10:10:10.111Z'),
+        expectedItem
+    ])
+    assert view.old_done_items == [expectedItem]
 
