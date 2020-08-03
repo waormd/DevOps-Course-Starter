@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
 from item import Item
-import session_items as session
 import requests as r
 import yaml
 
@@ -8,7 +7,6 @@ TRELLO_BASE_URL = 'https://api.trello.com'
 TRELLO_BOARD_ID = 'CX81X1uD'
 
 app = Flask(__name__)
-app.config.from_object('flask_config.Config')
 
 @app.route('/', methods=['POST'])
 def indexPost():
@@ -18,14 +16,13 @@ def indexPost():
     for item in lists:
         if item['name'] == "Todo":
             addCard(secrets, item['id'], title)
-
-    return index(loadItems(secrets, lists))
+    return redirect(url_for('indexGet'))
 
 @app.route('/', methods=['GET'])
 def indexGet():
     secrets = loadSecrets()
     lists = loadLists(secrets, TRELLO_BOARD_ID)
-    return index(loadItems(secrets, lists))
+    return render_template('index.html', items = loadItems(secrets, lists))
 
 @app.route('/complete_item', methods=['POST'])
 def indexPut():
@@ -36,11 +33,7 @@ def indexPut():
     for item in lists:
         if item['name'] == target:
             moveCard(secrets, cardId, item['id'])
-    return index(loadItems(secrets, lists))
-
-def index(sessionItems):
-    return render_template('index.html', items = sessionItems)
-
+    return redirect(url_for('indexGet'))
 
 def loadSecrets():
     with open('secrets.yml') as file:
