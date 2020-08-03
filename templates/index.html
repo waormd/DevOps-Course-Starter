@@ -18,6 +18,9 @@
           <td>
             Status
           </td>
+          <td>
+            
+          </td>
         </tr>
         {% for item in items %}
         <tr>
@@ -26,6 +29,17 @@
           </td>
           <td>
             {{ item.status }}
+          </td>
+          <td>
+            <form action="complete_item" method="post">
+                <select id="target" name="target">
+                    <option value="Todo">Todo</option>
+                    <option value="In progress">In progress</option>
+                    <option value="Done" selected >Done</option>
+                </select>
+                <input type="hidden" id="cardId" name="cardId" value={{ item.id }}></item>
+                <input type="submit" value="Update">
+            </form>
           </td>
         </tr>
         {% endfor %}
