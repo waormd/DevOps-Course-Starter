@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from item import Item
+from view import ViewModel
+
 import requests as r
 import yaml
 
@@ -22,7 +24,8 @@ def indexPost():
 def indexGet():
     secrets = loadSecrets()
     lists = loadLists(secrets, TRELLO_BOARD_ID)
-    return render_template('index.html', items = loadItems(secrets, lists))
+    item_view_model = ViewModel(loadItems(secrets, lists))
+    return render_template('index.html', view_model = item_view_model)
 
 @app.route('/complete_item', methods=['POST'])
 def indexPut():
