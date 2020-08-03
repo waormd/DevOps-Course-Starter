@@ -1,12 +1,13 @@
 from flask import Flask, render_template, request, redirect, url_for
 from todo.item import Item
 from todo.view import ViewModel
+import os
 
 import requests as r
 import yaml
 
 TRELLO_BASE_URL = 'https://api.trello.com'
-TRELLO_BOARD_ID = 'CX81X1uD'
+TRELLO_BOARD_ID = os.getenv('TRELLO_BOARD_ID')
 
 app = Flask(__name__)
 
