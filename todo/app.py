@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
-from item import Item
-from view import ViewModel
+from todo.item import Item
+from todo.view import ViewModel
 
 import requests as r
 import yaml
@@ -39,7 +39,7 @@ def indexPut():
     return redirect(url_for('indexGet'))
 
 def loadSecrets():
-    with open('secrets.yml') as file:
+    with open('config/secrets.yml') as file:
         secrets = yaml.load(file, Loader=yaml.FullLoader)
         return secrets['trello']
     return {}
