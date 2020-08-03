@@ -17,6 +17,9 @@
             {{ item.title }}
           </td>
           <td>
+            {{ item.lastModified }}
+          </td>
+          <td>
             <form action="complete_item" method="post">
                 <select id="target" name="target">
                     <option value="Todo">Todo</option>
@@ -38,6 +41,9 @@
             {{ item.title }}
           </td>
           <td>
+            {{ item.lastModified }}
+          </td>
+          <td>
             <form action="complete_item" method="post">
                 <select id="target" name="target">
                     <option value="Todo">Todo</option>
@@ -57,6 +63,9 @@
         <tr>
           <td>
             {{ item.title }}
+          </td>
+          <td>
+            {{ item.lastModified }}
           </td>
           <td>
             <form action="complete_item" method="post">

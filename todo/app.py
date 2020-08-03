@@ -49,7 +49,7 @@ def loadItems(secrets, lists):
     for item in lists:
         cards = loadCards(secrets, item['id'])
         for card in cards:
-            flattened.append(Item(card['id'], item['name'], card['name']))
+            flattened.append(Item(card['id'], item['name'], card['name'], card['dateLastActivity']))
     return flattened
 
 

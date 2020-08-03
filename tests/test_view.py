@@ -6,20 +6,20 @@ def example_items():
 
 def example_todo_items():
     return [
-        Item(0, 'Todo', 'A Title'),
-        Item(1, 'Todo', 'A Title')
+        Item(0, 'Todo', 'A Title', 'aDateTime'),
+        Item(1, 'Todo', 'A Title', 'aDateTime')
     ]
 
 def example_in_progress_items():
     return [
-        Item(2, 'In progress', 'A Title'),
-        Item(3, 'In progress', 'A Title')
+        Item(2, 'In progress', 'A Title', 'aDateTime'),
+        Item(3, 'In progress', 'A Title', 'aDateTime')
     ]
 
 def example_done_items():
     return [
-        Item(4, 'Done', 'A Title'),
-        Item(5, 'Done', 'A Title')
+        Item(4, 'Done', 'A Title', 'aDateTime'),
+        Item(5, 'Done', 'A Title', 'aDateTime')
     ]
 
 def test_todo_items():
