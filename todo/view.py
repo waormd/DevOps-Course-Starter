@@ -26,4 +26,8 @@ class ViewModel:
 
     @property
     def old_done_items(self):
-        return [ x for x in self._items if datetime.strptime(x.lastModified, "%Y-%m-%dT%H:%M:%S.%fZ") < datetime.combine(date.today(), datetime.max.time())]
+        return [ x for x in self._items if datetime.strptime(x.lastModified, "%Y-%m-%dT%H:%M:%S.%fZ") < datetime.combine(date.today(), datetime.min.time())]
+
+    @property
+    def show_all_done_items(self):
+        return True
