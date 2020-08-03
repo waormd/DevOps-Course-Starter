@@ -10,6 +10,10 @@ TRELLO_BOARD_ID = 'CX81X1uD'
 
 app = Flask(__name__)
 
+def create_app():
+    app = Flask(__name__)
+    return app
+
 @app.route('/', methods=['POST'])
 def indexPost():
     title = request.form['item']
@@ -75,4 +79,5 @@ def moveCard(secrets, cardId, targetListId):
 
 
 if __name__ == '__main__':
+    app = create_app()
     app.run()
