@@ -8,3 +8,13 @@
 1596470644828	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\SentryBay\\MyDesk.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\wcj\\AppData\\Local\\Temp\\rust_mozprofileBAMZhO"
 1596470652909	geckodriver	INFO	Listening on 127.0.0.1:53317
 1596470655902	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\SentryBay\\MyDesk.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\wcj\\AppData\\Local\\Temp\\rust_mozprofileyzIWGF"
+1596470665399	geckodriver	INFO	Listening on 127.0.0.1:53330
+1596470668391	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\SentryBay\\MyDesk.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\wcj\\AppData\\Local\\Temp\\rust_mozprofilejlI8go"
+1596993984005	geckodriver	INFO	Listening on 127.0.0.1:57031
+1596993987003	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\SentryBay\\MyDesk.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\wcj\\AppData\\Local\\Temp\\rust_mozprofile9vSr1f"
+1596993989422	geckodriver	INFO	Listening on 127.0.0.1:57041
+1596993992413	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\SentryBay\\MyDesk.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\wcj\\AppData\\Local\\Temp\\rust_mozprofilebJEdXu"
+1597075648260	geckodriver	INFO	Listening on 127.0.0.1:59052
+1597075651256	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\SentryBay\\MyDesk.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\wcj\\AppData\\Local\\Temp\\rust_mozprofile8MFDJ7"
+1597075653696	geckodriver	INFO	Listening on 127.0.0.1:59063
+1597075656687	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\SentryBay\\MyDesk.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\wcj\\AppData\\Local\\Temp\\rust_mozprofileei2q0u"

@@ -2,6 +2,7 @@ import requests as r
 
 class TrelloApi:
 
+
     def __init__(self, url, secrets):
         self.url = url
         self.secrets = secrets

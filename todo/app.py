@@ -16,47 +16,45 @@ def loadSecrets():
         return secrets['trello']
     return {}
 
-app = Flask(__name__)
 trelloApi = TrelloApi(TRELLO_BASE_URL, loadSecrets())
 
-def create_app():
+def create_app(trelloApi):
     app = Flask(__name__)
-    return app, trelloApi
 
-@app.route('/', methods=['POST'])
-def indexPost():
-    title = request.form['item']
-    lists = trelloApi.loadLists(TRELLO_BOARD_ID)
-    for item in lists:
-        if item['name'] == "Todo":
-            trelloApi.addCard(item['id'], title)
-    return redirect(url_for('indexGet'))
+    @app.route('/', methods=['POST'])
+    def indexPost():
+        title = request.form['item']
+        lists = trelloApi.loadLists(TRELLO_BOARD_ID)
+        for item in lists:
+            if item['name'] == "Todo":
+                trelloApi.addCard(item['id'], title)
+        return redirect(url_for('indexGet'))
 
-@app.route('/', methods=['GET'])
-def indexGet():
-    lists = trelloApi.loadLists(TRELLO_BOARD_ID)
-    item_view_model = ViewModel(loadItems(lists))
-    return render_template('index.html', view_model = item_view_model)
+    @app.route('/', methods=['GET'])
+    def indexGet():
+        print('get')
+        lists = trelloApi.loadLists(TRELLO_BOARD_ID)
+        item_view_model = ViewModel(loadItems(lists))
+        return render_template('index.html', view_model = item_view_model)
 
-@app.route('/complete_item', methods=['POST'])
-def indexPut():
-    cardId = request.form['cardId']
-    target = request.form['target']
-    lists = trelloApi.loadLists(TRELLO_BOARD_ID)
-    for item in lists:
-        if item['name'] == target:
-            trelloApi.moveCard(cardId, item['id'])
-    return redirect(url_for('indexGet'))
+    @app.route('/complete_item', methods=['POST'])
+    def indexPut():
+        cardId = request.form['cardId']
+        target = request.form['target']
+        lists = trelloApi.loadLists(TRELLO_BOARD_ID)
+        for item in lists:
+            if item['name'] == target:
+                trelloApi.moveCard(cardId, item['id'])
+        return redirect(url_for('indexGet'))
 
+    def loadItems(lists):
+        flattened = []
+        for item in lists:
+            cards = trelloApi.loadCards(item['id'])
+            for card in cards:
+                flattened.append(Item(card['id'], item['name'], card['name'], card['dateLastActivity']))
+        return flattened
 
-def loadItems(lists):
-    flattened = []
-    for item in lists:
-        cards = trelloApi.loadCards(item['id'])
-        for card in cards:
-            flattened.append(Item(card['id'], item['name'], card['name'], card['dateLastActivity']))
-    return flattened
+    return app
 
-if __name__ == '__main__':
-    app, trelloApi = create_app()
-    app.run()
+app = create_app(trelloApi)
