@@ -8,7 +8,7 @@ from threading import Thread
 from selenium import webdriver
 
 def createBoard(key, token, boardName):
-    resp = r.get(f"https://api.trello.com/1/boards/?key={key}&token={token}&name={boardName}").json()
+    resp = r.post(f"https://api.trello.com/1/boards/?key={key}&token={token}&name={boardName}").json()
     return resp['id']
 
 def deleteBoard(key, token, boardId):
@@ -23,7 +23,8 @@ def loadSecrets():
 
 @pytest.fixture(scope='module')
 def test_app():
-    board_id = createBoard('key', 'token', 'testBoard')
+    secrets = loadSecrets()
+    board_id = createBoard(secrets['api-key'], secrets['server-token'], 'testBoard')
     os.environ['TRELLO_BOARD_ID'] = board_id
 
     trello_api = TrelloApi('https://api.trello.com', loadSecrets())
@@ -35,7 +36,7 @@ def test_app():
     yield app
 
     thread.join(1)
-    deleteBoard('key', 'token', board_id)
+    deleteBoard(secrets['api-key'], secrets['server-token'], board_id)
 
 @pytest.fixture(scope="module")
 def driver():
