@@ -1,5 +1,5 @@
 import pytest
-import todo.app as app
+import app
 import dotenv
 from unittest.mock import MagicMock
 import requests.models as models

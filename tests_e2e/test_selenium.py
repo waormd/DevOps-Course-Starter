@@ -1,4 +1,4 @@
-import todo.app as app
+import app
 import requests as r
 import pytest
 import os
