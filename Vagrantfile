@@ -12,7 +12,11 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.box = "hasicorp/bionic64"
+  #
+
+  ### NETWORK NOT REQUIRED DOES NOT WORK WITH HYPERV INSTEAD USING BOX IP 
+  ### https://www.vagrantup.com/docs/providers/hyperv/limitations.html#limited-networking
+  config.vm.box = "hashicorp/bionic64"
   config.vm.provision "shell", privileged: false, inline: <<-SHELL    
     sudo apt-get update    
     sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
@@ -29,8 +33,17 @@ Vagrant.configure("2") do |config|
 
      curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
     
-     cd /vagrant && poetry install
   SHELL
+
+  config.trigger.after :up do |trigger|    
+    trigger.name = "Launching App"    
+    trigger.info = "Running the TODO app setup script"    
+    trigger.run_remote = {privileged: false, inline: "      
+        cd /vagrant && \
+        poetry install && \
+        poetry run flask run --host 0.0.0.0
+      "}  
+    end
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
