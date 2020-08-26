@@ -4,6 +4,7 @@
 
 The project uses a virtual environment to isolate package dependencies. To create the virtual environment and install required packages, run the following from a bash shell terminal:
 
+---------------------
 ### On macOS and Linux
 ```bash
 $ source setup.sh
@@ -13,10 +14,21 @@ $ source setup.sh
 $ source setup.sh --windows
 ```
 
+
 Once the setup script has completed and all packages have been installed, start the Flask app by running:
 ```bash
 $ flask run
 ```
+--------------------
+
+### With Vagrant - output goes to log.txt
+```bash
+$ vagrant provision
+$ vagrant up
+```
+
+------------
+
 
 You should see output similar to the following:
 ```bash
