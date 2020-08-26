@@ -28,7 +28,7 @@ Vagrant.configure("2") do |config|
     trigger.run_remote = {privileged: false, inline: "      
         cd /vagrant && \
         poetry install && \
-        poetry run flask run --host 0.0.0.0
+        poetry run flask run --host 0.0.0.0 > log.txt 2>&1 &
       "}  
     end
 end
