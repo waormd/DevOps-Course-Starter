@@ -1,8 +1,9 @@
 Vagrant.configure("2") do |config|
 
-  ### NETWORK NOT REQUIRED DOES NOT WORK WITH HYPERV INSTEAD USING BOX IP 
+  ### With HyperV you must navigate to <IP of box>:5000 rather than localhost:5000 
   ### https://www.vagrantup.com/docs/providers/hyperv/limitations.html#limited-networking
   config.vm.box = "hashicorp/bionic64"
+  config.vm.network "forwarded_port", guest: 5000, host: 5000
   config.vm.provision "shell", privileged: false, inline: <<-SHELL    
     sudo apt-get update    
     sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
