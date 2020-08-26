@@ -3,7 +3,6 @@ import requests as r
 import pytest
 import os
 import yaml
-from todo.trello_api import TrelloApi
 from threading import Thread
 from selenium import webdriver
 
@@ -14,20 +13,17 @@ def createBoard(key, token, boardName):
 def deleteBoard(key, token, boardId):
     r.delete(f"https://api.trello.com/1/boards/{boardId}?key={key}&token={token}")
 
-def loadSecrets():
-    with open('config/secrets.yml') as file:
-        secrets = yaml.load(file, Loader=yaml.FullLoader)
-        return secrets['trello']
-    return {}
-
-
 @pytest.fixture(scope='module')
 def test_app():
-    secrets = loadSecrets()
-    board_id = createBoard(secrets['api-key'], secrets['server-token'], 'testBoard')
+    apiKey = os.getenv('TRELLO_API_KEY')
+    serverToken = os.getenv('TRELLO_SERVER_TOKEN')
+    board_id = createBoard(apiKey, serverToken, 'testBoard')
+
     os.environ['TRELLO_BOARD_ID'] = board_id
 
-    trello_api = TrelloApi('https://api.trello.com', loadSecrets())
+    from todo.trello_api import TrelloApi
+
+    trello_api = TrelloApi('https://api.trello.com', board_id, apiKey, serverToken)
     application = app.create_app(trello_api)
 
     thread = Thread(target=lambda: application.run(use_reloader=False))
@@ -36,11 +32,11 @@ def test_app():
     yield app
 
     thread.join(1)
-    deleteBoard(secrets['api-key'], secrets['server-token'], board_id)
+    deleteBoard(apiKey, serverToken, board_id)
 
 @pytest.fixture(scope="module")
 def driver():
-    with webdriver.Firefox(executable_path='C:\\tools\\selenium\\drivers\\geckodriver.exe') as driver:
+    with webdriver.Firefox() as driver:
         yield driver
 
 def test_task_journey(driver, test_app):

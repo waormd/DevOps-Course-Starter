@@ -8,15 +8,8 @@ import requests as r
 import yaml
 
 TRELLO_BASE_URL = 'https://api.trello.com'
-TRELLO_BOARD_ID = os.getenv('TRELLO_BOARD_ID')
 
-def loadSecrets():
-    with open('config/secrets.yml') as file:
-        secrets = yaml.load(file, Loader=yaml.FullLoader)
-        return secrets['trello']
-    return {}
-
-trelloApi = TrelloApi(TRELLO_BASE_URL, loadSecrets())
+trelloApi = TrelloApi(TRELLO_BASE_URL, os.getenv('TRELLO_BOARD_ID'), os.getenv('TRELLO_API_KEY'), os.getenv('TRELLO_SERVER_TOKEN'))
 
 def create_app(trelloApi):
     app = Flask(__name__)
@@ -24,7 +17,7 @@ def create_app(trelloApi):
     @app.route('/', methods=['POST'])
     def indexPost():
         title = request.form['item']
-        lists = trelloApi.loadLists(TRELLO_BOARD_ID)
+        lists = trelloApi.loadLists()
         for item in lists:
             if item['name'] == "Todo":
                 trelloApi.addCard(item['id'], title)
@@ -33,7 +26,7 @@ def create_app(trelloApi):
     @app.route('/', methods=['GET'])
     def indexGet():
         print('get')
-        lists = trelloApi.loadLists(TRELLO_BOARD_ID)
+        lists = trelloApi.loadLists()
         item_view_model = ViewModel(loadItems(lists))
         return render_template('index.html', view_model = item_view_model)
 
@@ -41,7 +34,7 @@ def create_app(trelloApi):
     def indexPut():
         cardId = request.form['cardId']
         target = request.form['target']
-        lists = trelloApi.loadLists(TRELLO_BOARD_ID)
+        lists = trelloApi.loadLists()
         for item in lists:
             if item['name'] == target:
                 trelloApi.moveCard(cardId, item['id'])
