@@ -117,3 +117,6 @@ env/
 
 ### Secrets ###
 secrets.yml
+
+### Vagrant ###
+.vagrant/
