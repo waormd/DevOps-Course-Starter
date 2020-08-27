@@ -41,3 +41,16 @@ You should see output similar to the following:
  * Debugger PIN: 226-556-590
 ```
 Now visit [`http://localhost:5000/`](http://localhost:5000/) in your web browser to view the app.
+
+### Dev setup
+.env should contain the following environment variables:
+- TRELLO_BOARD_ID: string
+- TRELLO_API_KEY: string
+- TRELLO_SERVER_TOKEN: string 
+
+The Trello board must contain lists of "Todo" "In progress" and "Done"
+
+Please install geckodriver and place it on your PATH for selenium tests to work: https://github.com/mozilla/geckodriver/releases
+
+
+

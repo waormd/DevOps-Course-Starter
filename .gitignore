@@ -115,8 +115,10 @@ env/
 ### Configuration files ###
 .env
 
-### Secrets ###
-secrets.yml
+### Test files ###
+tests_e2e/requirements.txt
+tests_e2e/geckodriver.log
+geckodriver.log
 
 ### Vagrant ###
 .vagrant/

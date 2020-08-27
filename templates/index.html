@@ -9,26 +9,15 @@
 
   <div class="row">
     <div class="col-md-12">
-      <h2>Items</h2>
+      <h2>Todo Items</h2>
       <table>
-        <tr>
-          <td>
-            Title
-          </td>
-          <td>
-            Status
-          </td>
-          <td>
-            
-          </td>
-        </tr>
-        {% for item in items %}
+        {% for item in view_model.todo_items %}
         <tr>
           <td>
             {{ item.title }}
           </td>
           <td>
-            {{ item.status }}
+            {{ item.lastModified }}
           </td>
           <td>
             <form action="complete_item" method="post">
@@ -44,6 +33,108 @@
         </tr>
         {% endfor %}
       </table>
+      <h2>In Progress Items</h2>
+      <table>
+        {% for item in view_model.in_progress_items %}
+        <tr>
+          <td>
+            {{ item.title }}
+          </td>
+          <td>
+            {{ item.lastModified }}
+          </td>
+          <td>
+            <form action="complete_item" method="post">
+                <select id="target" name="target">
+                    <option value="Todo">Todo</option>
+                    <option value="In progress">In progress</option>
+                    <option value="Done" selected >Done</option>
+                </select>
+                <input type="hidden" id="cardId" name="cardId" value={{ item.id }}></item>
+                <input type="submit" value="Update">
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% if view_model.done_items|length < 6 %}
+      <h2>Done Items</h2>
+      <table>
+        {% for item in view_model.done_items %}
+        <tr>
+          <td>
+            {{ item.title }}
+          </td>
+          <td>
+            {{ item.lastModified }}
+          </td>
+          <td>
+            <form action="complete_item" method="post">
+                <select id="target" name="target">
+                    <option value="Todo">Todo</option>
+                    <option value="In progress">In progress</option>
+                    <option value="Done" selected >Done</option>
+                </select>
+                <input type="hidden" id="cardId" name="cardId" value={{ item.id }}></item>
+                <input type="submit" value="Update">
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% endif %}
+      {% if view_model.done_items|length > 5 %}
+      <h2>Done Items</h2>
+      <table>
+        {% for item in view_model.recent_done_items %}
+        <tr>
+          <td>
+            {{ item.title }}
+          </td>
+          <td>
+            {{ item.lastModified }}
+          </td>
+          <td>
+            <form action="complete_item" method="post">
+                <select id="target" name="target">
+                    <option value="Todo">Todo</option>
+                    <option value="In progress">In progress</option>
+                    <option value="Done" selected >Done</option>
+                </select>
+                <input type="hidden" id="cardId" name="cardId" value={{ item.id }}></item>
+                <input type="submit" value="Update">
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% if view_model.show_all_done_items %}
+      <h2>Old Done Items</h2>
+      <table>
+        {% for item in view_model.old_done_items %}
+        <tr>
+          <td>
+            {{ item.title }}
+          </td>
+          <td>
+            {{ item.lastModified }}
+          </td>
+          <td>
+            <form action="complete_item" method="post">
+                <select id="target" name="target">
+                    <option value="Todo">Todo</option>
+                    <option value="In progress">In progress</option>
+                    <option value="Done" selected >Done</option>
+                </select>
+                <input type="hidden" id="cardId" name="cardId" value={{ item.id }}></item>
+                <input type="submit" value="Update">
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+        </table>
+      {% endif %}
       <form action="" method="post">
         <input type="text" id="item" name="item">
         <input type="submit" value="Add">
