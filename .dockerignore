@@ -1,0 +1,9 @@
+.env.template
+.env.test
+.git
+.gitignore
+.vscode
+Vagrantfile
+tests
+tests_e2e
+setup.sh
