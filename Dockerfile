@@ -10,7 +10,8 @@ RUN useradd -m user
 
 USER user
 
-ENV PATH=/home/user/.poetry/bin:/home/user/.local/bin:$PATH 
+ENV PATH=/home/user/.poetry/bin:/home/user/.local/bin:/home/user/.pyenv/bin:$PATH \
+    PYENV_ROOT=/home/user/.pyenv 
 
 RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python && \
     pip install gunicorn flask && \
@@ -22,8 +23,6 @@ RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-
 EXPOSE 5000 5000
 
 FROM base as dev
-ENV PATH=/home/user/.pyenv/bin:$PATH 
-ENV PYENV_ROOT=/home/user/.pyenv 
 RUN git clone https://github.com/pyenv/pyenv.git ~/.pyenv && \
     echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.profile && \
     echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.profile && \
