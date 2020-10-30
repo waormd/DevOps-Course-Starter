@@ -1,0 +1,6 @@
+.env
+.env.template
+.env.test
+.git
+.gitignore
+Vagrantfile

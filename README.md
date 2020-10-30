@@ -53,4 +53,29 @@ The Trello board must contain lists of "Todo" "In progress" and "Done"
 Please install geckodriver and place it on your PATH for selenium tests to work: https://github.com/mozilla/geckodriver/releases
 
 
+-------
+
+### Run with Gunicorn and docker:
+Place .env file somewhere
+
+#### Run Dev (cmd.exe)
+```cmd
+docker build --target dev --tag todo-app:latest . && docker run -p 5000:5000/tcp -d  --env-file .env todo-app:latest
+```
+
+#### Run Dev (bash)
+```bash
+docker build --target dev --tag todo-app:latest . && docker run -p 5000:5000/tcp -d  --env-file .env todo-app:latest
+```
+
+#### Run Production (cmd.exe)
+```cmd
+docker build --target production --tag todo-app:latest . && docker run -p 5000:5000/tcp -d  --env-file .env todo-app:latest
+```
+
+#### Run Production (bash)
+```bash
+docker build --target production --tag todo-app:latest . && docker run -p 5000:5000/tcp -d --env-file .env todo-app:latest
+```
+where ".env" is the path to your environment variables
 
