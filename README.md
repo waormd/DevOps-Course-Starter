@@ -79,3 +79,20 @@ docker build --target production --tag prod . && docker run -p 5000:5000/tcp -d 
 ```
 where ".env" is the path to your environment variables
 
+
+### Run Tests
+Unit
+```cmd
+docker build --target test --tag test-image . && docker run test-image tests
+```
+
+e2e
+```cmd
+docker build --target test --tag test-image . && docker run test-image tests_e2e
+```
+
+all
+```cmd
+docker build --target test --tag test-image . && docker run test-image
+```
+
