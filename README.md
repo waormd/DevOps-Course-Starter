@@ -88,11 +88,11 @@ docker build --target test --tag test-image . && docker run test-image tests
 
 e2e
 ```cmd
-docker build --target test --tag test-image . && docker run test-image tests_e2e
+docker build --target test --tag test-image . && docker run --env-file .env test-image tests_e2e
 ```
 
 all
 ```cmd
-docker build --target test --tag test-image . && docker run test-image
+docker build --target test --tag test-image . && docker run --env-file .env test-image
 ```
 
