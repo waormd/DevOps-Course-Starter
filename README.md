@@ -65,17 +65,17 @@ docker build --target dev --tag dev . && docker run -p 5000:5000/tcp -d -v %cd%:
 
 #### Run Dev (bash)
 ```bash
-docker build --target dev --tag todo-app:latest . && docker run -p 5000:5000/tcp -d -v .:/todo-app --env-file .env todo-app:latest
+docker build --target dev --tag dev . && docker run -p 5000:5000/tcp -d -v $(pwd):/todo-app --env-file .env dev
 ```
 
 #### Run Production (cmd.exe)
 ```cmd
-docker build --target production --tag todo-app:latest . && docker run -p 5000:5000/tcp -d  --env-file .env todo-app:latest
+docker build --target production --tag prod . && docker run -p 5000:5000/tcp -d --env-file .env prod
 ```
 
 #### Run Production (bash)
 ```bash
-docker build --target production --tag todo-app:latest . && docker run -p 5000:5000/tcp -d --env-file .env todo-app:latest
+docker build --target production --tag prod . && docker run -p 5000:5000/tcp -d --env-file .env prod
 ```
 where ".env" is the path to your environment variables
 
