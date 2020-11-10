@@ -7,4 +7,4 @@ env:
 script:
   - docker build --target test --tag test-image .
   - docker run test-image tests
-  - docker run --env TRELLO_BOARD_ID=$TRELLO_BOARD_ID TRELLO_API_KEY=$TRELLO_API_KEY TRELLO_SERVER_TOKEN=$TRELLO_SERVER_TOKEN test-image tests_e2e
+  - docker run -e TRELLO_BOARD_ID=$TRELLO_BOARD_ID -e TRELLO_API_KEY=$TRELLO_API_KEY -e TRELLO_SERVER_TOKEN=$TRELLO_SERVER_TOKEN test-image tests_e2e
