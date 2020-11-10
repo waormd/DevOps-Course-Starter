@@ -60,12 +60,12 @@ Place .env file somewhere
 
 #### Run Dev (cmd.exe)
 ```cmd
-docker build --target dev --tag todo-app:latest . && docker run -p 5000:5000/tcp -d  --env-file .env todo-app:latest
+docker build --target dev --tag dev . && docker run -p 5000:5000/tcp -d -v %cd%:/todo-app --env-file .env dev
 ```
 
 #### Run Dev (bash)
 ```bash
-docker build --target dev --tag todo-app:latest . && docker run -p 5000:5000/tcp -d  --env-file .env todo-app:latest
+docker build --target dev --tag todo-app:latest . && docker run -p 5000:5000/tcp -d -v .:/todo-app --env-file .env todo-app:latest
 ```
 
 #### Run Production (cmd.exe)
