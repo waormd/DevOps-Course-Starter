@@ -1,2 +1,4 @@
 script:
-    - echo "hello world"
+    - docker build --target test --tag test-image
+    - docker run test-image tests
+    - docker run --env-file .env test-image tests_e2e
