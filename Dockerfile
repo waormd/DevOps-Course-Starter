@@ -18,13 +18,14 @@ ENTRYPOINT cd /todo-app && poetry install && poetry run flask run --host 0.0.0.0
 FROM base as copied
 COPY . /todo-app
 WORKDIR /todo-app
-RUN poetry install
 
 FROM copied as production
+RUN poetry install --no-dev
 ENTRYPOINT ["poetry", "run", "gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "app:app"]
 
 FROM copied as test
 # Install Chrome
+RUN poetry install
 RUN curl -sSL https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -o chrome.deb &&\    
     apt-get install ./chrome.deb -y &&\    
     rm ./chrome.deb
