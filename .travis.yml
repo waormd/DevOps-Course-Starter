@@ -7,7 +7,7 @@ env:
   - secure: ACRFG9mZOBhXYpMjMiwVwzv1Vv8mGgZCL/qC0a5x5X/qF7USyBTG45wwV8BnDQQGDgaZAB1WMHaYfZfXMdivXZdC2lVBvLZ25mJDw0rpJAPvjKSbtq4RMNJl9glzEoyjSiODqGKjkOWcpxqr10zAjDPuLlUua1kLhe0NR6ozwzj63/qeElo5wzGKXsrIE4P0DhCU3qWm8p3glU/ObAkufWo6xh7mgG1aNXIJMYwXXQujUs99i2NWzZLK6pKlbP9eIh9A33AgLJtwfuIMO4gJV8dDUn0OnAmwF9kXajscUGshsT6ktVeLb5Bq/dx9HBdAGREYan4Imfwd2o9d+Vb/UBqQHBix4g2iuHuxWICWF8HSIeGdBVE2n6XVfc/27qMx+cIQCAv3/IFtN1xJQcA58SyKM8NSRkODfRgWMiYjxPyLAKfrs9wpIATVL1Mnow7UNqxkROvVatYOW7ZkJ19K7/mEZW6fUIbzA8Jt+3TPJH0IYeLZ2r6to5pQ68jSCXlLOgmNpj21G0dOfbJj25iE62E0GT9Qb/+kAerZT2xb/DNo4l0Jn97SlMPECCCDmDFvGlkscD/ZRGGxN/RTZWoPmLbAnZnbO2SiXG9HF0ywhBpUExE2/+cVCp3DrvdHdN6GcYbDgAlyiOOvmadah/u/wPtrJ9zoVFH3j4K7uklPi8c=
 script:
 - docker build --target test --tag todo-app-test .
-- docker run test-image tests
+- docker run todo-app-test tests
 - docker run -e TRELLO_BOARD_ID -e TRELLO_API_KEY -e TRELLO_SERVER_TOKEN todo-app-test tests_e2e
 - docker build --target prod --tag waormd/todo-app-prod:$TRAVIS_COMMIT --tag waormd/todo-app-prod:latest .
 - echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
