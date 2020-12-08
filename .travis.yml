@@ -8,19 +8,14 @@ env:
   - secure: RE6YRfudFy5TiIO9tJXKqfrgAM/kELMzHqbAsXrsLegE+BNk+XCD4UJ8K6sY7Rkrfod+0p7/G512b3DNaL0N1BMs+tW4TncrbwVX2+d8l30TgYzZlylUdeB0rfTVQWR/cbS6GewwW5DYJwfYQkv37gatMzQhoejeWSJZBBr4JKpmd+T0NPUKPp6OjECjHYuJ7qpOWo5pfYc0bwYzFMF0LMT2jyi8JdayzKtuwy51h47/g5OqQHVIlbPxmfrnXgkXVoZX8XIjJUDztxds914qs6zwM0QRxAxdw6xklwdZArDHQ1t5TB5Yj17EZVTv5z6V9QPOJKM7xbjUkkdKp8lluotO/ZJzoZ92KGtSufy9YIRa0yh09KhFlRhol7PMApY2OI0iyl6NRRHqpXoTiNZC+lc+yrw2w7j8b8Gnvn+7+tvGBfwBMupLwvLyxtEL3lOxHFWghLpNUNhEzZEed5DSAI+oOaKr5rxHpZDh6K6TKSp3FRTjXbosf3+1fqXC93u4RYW72CaccjYThTguSExktQnQl5hga68Cwhn864nv4R8h14rBatNB6UeXW9WmParV/z3vu4QNAV1i02tw9DcOVUM/Z+4Tm1kI7aJN3ox2rIbnSzWOn6/AbgxTnnjzNZUWJi9IIPiRMHk1XoK0DffasXXerQ6IOKb8cB463gItors=
 jobs:
   include:
-  - stage: Build test image
-    name: Build test image
-    script: docker build --target test --tag todo-app-test .
   - stage: Tests
-    name: Unit
-    script: docker run todo-app-test tests
-  - script: docker run -e TRELLO_BOARD_ID -e TRELLO_API_KEY -e TRELLO_SERVER_TOKEN todo-app-test tests_e2e
-    name: e2e
-  - stage: Build prod image
-    name: Build prod image
-    script: docker build --target prod --tag waormd/todo-app-prod:$TRAVIS_COMMIT --tag waormd/todo-app-prod:latest .
-  - stage: Push prod image
-    name: Push prod image
-    script: echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin && \ 
-            docker push waormd/todo-app-prod:$TRAVIS_COMMIT && \ 
-            docker push waormd/todo-app-prod:latest
+    script: 
+    - docker build --target test --tag todo-app-test .
+    - docker run todo-app-test tests
+    - docker run -e TRELLO_BOARD_ID -e TRELLO_API_KEY -e TRELLO_SERVER_TOKEN todo-app-test tests_e2e
+  - stage: Push
+    script: 
+    - docker build --target prod --tag waormd/todo-app-prod:$TRAVIS_COMMIT --tag waormd/todo-app-prod:latest .
+    - echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
+    - docker push waormd/todo-app-prod:$TRAVIS_COMMIT
+    - docker push waormd/todo-app-prod:latest
