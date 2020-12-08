@@ -56,26 +56,38 @@ Please install geckodriver and place it on your PATH for selenium tests to work:
 -------
 
 ### Run with Gunicorn and docker:
-Place .env file somewhere
+Place ".env" file somewhere where ".env" is the path to your environment variables
 
 #### Run Dev (cmd.exe)
 ```cmd
-docker build --target dev --tag todo-app:latest . && docker run -p 5000:5000/tcp -d  --env-file .env todo-app:latest
+docker build --target dev --tag dev . && docker run -p 5000:5000/tcp -d -v %cd%:/todo-app --env-file .env dev
 ```
 
 #### Run Dev (bash)
 ```bash
-docker build --target dev --tag todo-app:latest . && docker run -p 5000:5000/tcp -d  --env-file .env todo-app:latest
+docker build --target dev --tag dev . && docker run -p 5000:5000/tcp -d -v $(pwd):/todo-app --env-file .env dev
 ```
 
-#### Run Production (cmd.exe)
-```cmd
-docker build --target production --tag todo-app:latest . && docker run -p 5000:5000/tcp -d  --env-file .env todo-app:latest
+#### Run Production
+```
+docker build --target production --tag prod . && docker run -p 5000:5000/tcp -d --env-file .env prod
 ```
 
-#### Run Production (bash)
-```bash
-docker build --target production --tag todo-app:latest . && docker run -p 5000:5000/tcp -d --env-file .env todo-app:latest
+
+
+### Run Tests
+Unit
 ```
-where ".env" is the path to your environment variables
+docker build --target test --tag test-image . && docker run test-image tests
+```
+
+e2e
+```
+docker build --target test --tag test-image . && docker run --env-file .env test-image tests_e2e
+```
+
+all
+```
+docker build --target test --tag test-image . && docker run --env-file .env test-image
+```
 
