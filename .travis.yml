@@ -17,10 +17,10 @@ jobs:
           name: "e2e"
         - stage: "Build prod image"
           script: docker build --target prod --tag waormd/todo-app-prod:$TRAVIS_COMMIT --tag waormd/todo-app-prod:latest .
-          if: branch = main
+          if: branch = master
         - stage: "Push prod image"
           script: echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin && \
                   docker push waormd/todo-app-prod:$TRAVIS_COMMIT && \
                   docker push waormd/todo-app-prod:latest
-          if: branch = main
+          if: branch = master
 
