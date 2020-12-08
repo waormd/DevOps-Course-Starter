@@ -60,20 +60,20 @@ Place ".env" file somewhere where ".env" is the path to your environment variabl
 
 #### Run Dev (cmd.exe)
 ```cmd
-docker build --target dev --tag todo-app-dev . && \
-docker run -p 5000:5000/tcp -d -v %cd%:/todo-app --env-file .env todo-app-dev
+docker build --target dev --tag waormd/todo-app-dev . && \
+docker run -p 5000:5000/tcp -d -v %cd%:/todo-app --env-file .env waormd/todo-app-dev
 ```
 
 #### Run Dev (bash)
 ```bash
-docker build --target dev --tag todo-app-dev . && \
-docker run -p 5000:5000/tcp -d -v $(pwd):/todo-app --env-file .env todo-app-dev
+docker build --target dev --tag waormd/todo-app-dev . && \
+docker run -p 5000:5000/tcp -d -v $(pwd):/todo-app --env-file .env waormd/todo-app-dev
 ```
 
 #### Run Production
 ```
-docker build --target prod --tag todo-app-prod . && \
-docker run -p 5000:5000/tcp -d --env-file .env todo-app-prod
+docker build --target prod --tag waormd/todo-app-prod . && \
+docker run -p 5000:5000/tcp -d --env-file .env waormd/todo-app-prod
 ```
 
 
@@ -81,19 +81,19 @@ docker run -p 5000:5000/tcp -d --env-file .env todo-app-prod
 ### Run Tests
 Unit
 ```
-docker build --target test --tag todo-app-test . && \
-docker run todo-app-test tests
+docker build --target test --tag waormd/todo-app-test . && \
+docker run waormd/todo-app-test tests
 ```
 
 e2e
 ```
-docker build --target test --tag todo-app-test . && \
-docker run --env-file .env todo-app-test tests_e2e
+docker build --target test --tag waormd/todo-app-test . && \
+docker run --env-file .env waormd/todo-app-test tests_e2e
 ```
 
 all
 ```
-docker build --target test --tag todo-app-test . && \
-docker run --env-file .env todo-app-test
+docker build --target test --tag waormd/todo-app-test . && \
+docker run --env-file .env waormd/todo-app-test
 ```
 
