@@ -6,16 +6,30 @@ env:
   - secure: kDOrhVaMyb1PJ6m/42YCuoDVs+qWzEjFbcAqom+pp+wfF5JMfbje3leXfKweERlMULVGzWFeY/JjkFPfmTzJvMOKIEi3EqxjjipDe/7ywMwqvneZX+qWAdybwg6yD/yOxz2L5MJnUEZhBMXr3BU1U0UvKy0Zw4xf3zBJ/LsMv+aYa62Gr6syckFSxtsayP/RKc+FtAAozZ53BNRHTjKtcKCdkH8vpZ9xKN+1tZpUMiyfDEZ2a5H+xexMOSLLzCnyUdRA1N51N3bSYsxU0ea9LHtpzKvivnGu9MsAsdToBj8R2Bj6wHZNixo0SdP6NqmRR6aM6cN4uoWP/jsGOm50o1Mf3aY+uM5ELunbWXlvVQc0yjWCbUgIleiYtG3ZD7bj2MsgB/BvG2oOu7nzMrI6KOlv1cDytilaziQlL+oC2Ap+9ThP/czYO4nudPclCmbmNUTGPepKprb8lVXWQXu5YrmUbzvnE1IpuhN2kUxIG39PvVp8aiefy3pNdZAOLnekJAzQCfa7hd08aVn1Oj8xy8JBK+O5b2J4LJ4ULvBkXpzfPWQOJcTFo3L+UhJ6Oih3fx5gv38qznioFW+0bytVF1lQaflvVNjxG+zi+pHNWYff1DBWPqN0rNjoSUYg26efeBSSptUX95kprcbWC5nziPADaVpZgxRhLr5RjPrbyDs=
   - secure: ACRFG9mZOBhXYpMjMiwVwzv1Vv8mGgZCL/qC0a5x5X/qF7USyBTG45wwV8BnDQQGDgaZAB1WMHaYfZfXMdivXZdC2lVBvLZ25mJDw0rpJAPvjKSbtq4RMNJl9glzEoyjSiODqGKjkOWcpxqr10zAjDPuLlUua1kLhe0NR6ozwzj63/qeElo5wzGKXsrIE4P0DhCU3qWm8p3glU/ObAkufWo6xh7mgG1aNXIJMYwXXQujUs99i2NWzZLK6pKlbP9eIh9A33AgLJtwfuIMO4gJV8dDUn0OnAmwF9kXajscUGshsT6ktVeLb5Bq/dx9HBdAGREYan4Imfwd2o9d+Vb/UBqQHBix4g2iuHuxWICWF8HSIeGdBVE2n6XVfc/27qMx+cIQCAv3/IFtN1xJQcA58SyKM8NSRkODfRgWMiYjxPyLAKfrs9wpIATVL1Mnow7UNqxkROvVatYOW7ZkJ19K7/mEZW6fUIbzA8Jt+3TPJH0IYeLZ2r6to5pQ68jSCXlLOgmNpj21G0dOfbJj25iE62E0GT9Qb/+kAerZT2xb/DNo4l0Jn97SlMPECCCDmDFvGlkscD/ZRGGxN/RTZWoPmLbAnZnbO2SiXG9HF0ywhBpUExE2/+cVCp3DrvdHdN6GcYbDgAlyiOOvmadah/u/wPtrJ9zoVFH3j4K7uklPi8c=
   - secure: RE6YRfudFy5TiIO9tJXKqfrgAM/kELMzHqbAsXrsLegE+BNk+XCD4UJ8K6sY7Rkrfod+0p7/G512b3DNaL0N1BMs+tW4TncrbwVX2+d8l30TgYzZlylUdeB0rfTVQWR/cbS6GewwW5DYJwfYQkv37gatMzQhoejeWSJZBBr4JKpmd+T0NPUKPp6OjECjHYuJ7qpOWo5pfYc0bwYzFMF0LMT2jyi8JdayzKtuwy51h47/g5OqQHVIlbPxmfrnXgkXVoZX8XIjJUDztxds914qs6zwM0QRxAxdw6xklwdZArDHQ1t5TB5Yj17EZVTv5z6V9QPOJKM7xbjUkkdKp8lluotO/ZJzoZ92KGtSufy9YIRa0yh09KhFlRhol7PMApY2OI0iyl6NRRHqpXoTiNZC+lc+yrw2w7j8b8Gnvn+7+tvGBfwBMupLwvLyxtEL3lOxHFWghLpNUNhEzZEed5DSAI+oOaKr5rxHpZDh6K6TKSp3FRTjXbosf3+1fqXC93u4RYW72CaccjYThTguSExktQnQl5hga68Cwhn864nv4R8h14rBatNB6UeXW9WmParV/z3vu4QNAV1i02tw9DcOVUM/Z+4Tm1kI7aJN3ox2rIbnSzWOn6/AbgxTnnjzNZUWJi9IIPiRMHk1XoK0DffasXXerQ6IOKb8cB463gItors=
+  - secure: dV+YNQclH6Pje5XfLWzOsWVA50x8nKVcXdjMZs/df6C1jOQ+8IobMbpKUqA7/k+018wzdNphT5v23hiPMqfAIcwvBjm/qmiA/NkDK0bTu2twGCCId45eTS0P9kNRW53wnQU3hEAnAPhP8ig4NVr60dwHoMbCVaIEcyiySLsGvkRsNxFYWDfSpIBLm5RYmfqsKPb7JNkvjsw+Z48gCIRgtbdA5liYxqu3BWBAK7Cb6GZ8WCbFo6sEGz4mZRvyuNOSmMIS372JjbX221SulmmGFn1V/Zq8gOg+PqsXGSFUeziuwoNShNW6gpjeM7QhfPnUg9G5lZkd2AyZ3OpB17MqnyGo/0b6VNiM1GNcWVCgbNfKpYbU38qjnCpnlgmAZoLtli6iY7jLsGY3zZqR2b/gH6VvLUkJeRNe2vzVsavBlBGeIdXS1QgPso977q8qoApWmV0VD2YRJvGFcbKKTqsdpFAfvG3HLlx5TPraqMmfmndcywILHwEIB+lON9VkDWxVaIHeE1mEpt9plkh7xINyJWhQ24HIIUlBa5hDCjrjfZkGghXEQDHrsUxKY3SxTRNxIJR2ozk9g6MFGvtl43CDp511QyIAWetXRAJ28uZK3gTDQrs7sjt4E9J3xESAu2s4Z6mbVZHQ9gJmlF9XqrefXJQRQ5qjQplfxvJ7Rjh01UI=
+  - secure: thPMZluDXcibE8jkHbhXlASUtpP1c5S4mFqDyRE3DA+9Erzk5gNT8ZX2rdpOsjU6QdVJVGtarp0t39/LqQmneXr/Sjm9BK8B0dqxXUVEIwLCxeMdi4aNpBA6aiBwgQzdu2sxjxRAljYPVwk0AUG7ZoD3z1Phwc6w2KHncNhokX6k0a+FoGpuZAc4RwLqwWMbdWhUITwSFoH5p9Dk/Sup+U+hrBPS9U+qS2h7GrqQW5iDpmw62A60lqRJsJ3eB+O7ANmF7CSG7f1mX2c8gx69FgaoJgqiaTpfgrpiirL/MfZCq1XzW9SvPRblmC1OYbGiR8WgGs4+LEYEij6opA//HQlAE2/aXy6+yk0aKy3/5dfNaAwhPYAZr6g1N/z/gfIEPsoG7JktBLH1OepUVmXkEfzXIdqUh+Bb3mrliD/CdJzm43smIET+dqyJsns1JyZ91db04jNVUDC3+9blufKF2McxeHQg8DgNJYZmlI7Drpyt8UDRKYM32n1elpBY40IM21c2cEyHyre/qoHvg54DYUA0Coo1ClhzHwqjqo/LlLf2YB3Mg1sFm6czOnW7W/ExhebJkHUgPrGa3F9o3SkHvSH6B6RuX15mkBPpO7AA5PlXhHLoLSrWGfbbdXNKQMVEG7s1iifNU1CmeFeLBloWJwNIgJi2kor0Cdl1klVDS84=
 jobs:
   include:
   - stage: Tests
-    script: 
+    script:
     - docker build --target test --tag todo-app-test .
     - docker run todo-app-test tests
-    - docker run -e TRELLO_BOARD_ID -e TRELLO_API_KEY -e TRELLO_SERVER_TOKEN todo-app-test tests_e2e
+    - docker run -e TRELLO_BOARD_ID -e TRELLO_API_KEY -e TRELLO_SERVER_TOKEN todo-app-test
+      tests_e2e
   - stage: Push
-    script: 
-    - docker build --target prod --tag waormd/todo-app-prod:$TRAVIS_COMMIT --tag waormd/todo-app-prod:latest .
+    script:
+    - docker build --target prod --tag waormd/todo-app-prod:$TRAVIS_COMMIT --tag waormd/todo-app-prod:latest
+      .
     - echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
     - docker push waormd/todo-app-prod:$TRAVIS_COMMIT
     - docker push waormd/todo-app-prod:latest
+  - stage: Deploy
+    before_script:
+    - echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
+    - curl https://cli-assets.heroku.com/install.sh | sh
+    - docker login --username=$HEROKU_USERNAME --password=$HEROKU_API_KEY registry.heroku.com
+    script:
+    - docker pull waormd/todo-app-prod:latest
+    - docker tag waormd/todo-app-prod registry.heroku.com/waormd-todo-app/web
+    - docker push registry.heroku.com/waormd-todo-app
+    - heroku container:release web --app waormd-todo-app
