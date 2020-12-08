@@ -15,11 +15,10 @@ ENTRYPOINT cd /todo-app && poetry install && poetry run flask run --host 0.0.0.0
 
 FROM base as copied
 COPY . /todo-app
-RUN poetry config virtualenvs.create false --local 
 WORKDIR /todo-app
 
 FROM copied as prod
-RUN poetry install --no-dev
+RUN poetry config virtualenvs.create false --local && poetry install --no-dev
 ENTRYPOINT ["poetry", "run", "gunicorn", "-w", "4", "-b", "0.0.0.0:$PORT", "app:app"]
 
 FROM copied as test
