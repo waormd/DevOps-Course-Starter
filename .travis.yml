@@ -11,4 +11,5 @@ script:
 - docker run -e TRELLO_BOARD_ID -e TRELLO_API_KEY -e TRELLO_SERVER_TOKEN todo-app-test tests_e2e
 - docker build --target prod --tag waormd/todo-app-prod:$TRAVIS_COMMIT --tag waormd/todo-app-prod:latest .
 - echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
-- docker push waormd/todo-app-prod
+- docker push waormd/todo-app-prod:$TRAVIS_COMMIT
+- docker push waormd/todo-app-prod:latest
