@@ -15,6 +15,7 @@ ENTRYPOINT cd /todo-app && poetry install && poetry run flask run --host 0.0.0.0
 
 FROM base as copied
 COPY . /todo-app
+RUN poetry config virtualenvs.create false --local 
 WORKDIR /todo-app
 
 FROM copied as prod
