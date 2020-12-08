@@ -60,17 +60,20 @@ Place ".env" file somewhere where ".env" is the path to your environment variabl
 
 #### Run Dev (cmd.exe)
 ```cmd
-docker build --target dev --tag dev . && docker run -p 5000:5000/tcp -d -v %cd%:/todo-app --env-file .env dev
+docker build --target dev --tag dev . && \
+docker run -p 5000:5000/tcp -d -v %cd%:/todo-app --env-file .env dev
 ```
 
 #### Run Dev (bash)
 ```bash
-docker build --target dev --tag dev . && docker run -p 5000:5000/tcp -d -v $(pwd):/todo-app --env-file .env dev
+docker build --target dev --tag dev . && \
+docker run -p 5000:5000/tcp -d -v $(pwd):/todo-app --env-file .env dev
 ```
 
 #### Run Production
 ```
-docker build --target production --tag prod . && docker run -p 5000:5000/tcp -d --env-file .env prod
+docker build --target production --tag prod . && \
+docker run -p 5000:5000/tcp -d --env-file .env prod
 ```
 
 
@@ -78,16 +81,19 @@ docker build --target production --tag prod . && docker run -p 5000:5000/tcp -d 
 ### Run Tests
 Unit
 ```
-docker build --target test --tag test-image . && docker run test-image tests
+docker build --target test --tag test-image . && \
+docker run test-image tests
 ```
 
 e2e
 ```
-docker build --target test --tag test-image . && docker run --env-file .env test-image tests_e2e
+docker build --target test --tag test-image . && \
+docker run --env-file .env test-image tests_e2e
 ```
 
 all
 ```
-docker build --target test --tag test-image . && docker run --env-file .env test-image
+docker build --target test --tag test-image . && \
+docker run --env-file .env test-image
 ```
 
