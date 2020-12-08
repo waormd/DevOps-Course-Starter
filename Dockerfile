@@ -19,7 +19,7 @@ WORKDIR /todo-app
 
 FROM copied as prod
 RUN poetry config virtualenvs.create false && poetry install --no-dev
-ENTRYPOINT ["poetry", "run", "gunicorn", "-w", "4", "-b", "0.0.0.0:${PORT}", "app:app"]
+ENTRYPOINT ["poetry run gunicorn -w 4 -b 0.0.0.0:$PORT app:app"]
 
 FROM copied as test
 # Install Chrome
