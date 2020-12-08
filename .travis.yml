@@ -5,11 +5,22 @@ env:
   - secure: 2PKrWPPpKHt9LgGLbhfFB0cyk4SFx9ZYCHV1LStV8+sypsKVy/xOtFez+6B3T3vccb+kM+oOttQ/r2AO0BNhN3+OXC+AEu7nEa49zRILx05yVzLEXAbgXpG6Zzb2c15Q5fKN5GcVSs7D/udY1JJfmNXzrEflOvP5I9Uvw4QYjUsO9E+xCJaXswxGdSSNydlVsmbSJi4DC9+zAWalptprS4lp+4wxU28q05ozm7gCeKEIq2WOpNUyPthlZTnIES888oyUHI2D71J/xkPZtoxL0y6/2cLCsa8E51CR6xyHW2xNOpqdmOZR3CUkJrqyT7vQ5ygJrvvWqwPxF8m6f0cfi6IttB3IHI76/Onf5wzlU/8aNqxm1XfNEM7OeVgnP4CfX65xLbZomhuEATOxlTPy5ql3Iuq9eEuANbEoHOGRl7DEdfgfJ8sl4JrQiARUtPqEs/cXn4BwjpZK/JVymHtQaJhof2PlN+maWHaqL0r3daPxga6ukGB1uamXKkuS0wh2Fbx9yUzitsNJ5N6e6rzsH7rg1YE8dVU8jCLkJgLK/Munv/f+wwR6s7N+8QzDPSmZ47YCqP2pYNGOIls13s6oBaixPYiMaiLO6lQiQWOGU/0tNSetQaP20D5OO4SxP0LIuzIax/ecseb0kR1bBV6PZvLZkg9l+vK9+ayh76vo1QQ=
   - secure: kDOrhVaMyb1PJ6m/42YCuoDVs+qWzEjFbcAqom+pp+wfF5JMfbje3leXfKweERlMULVGzWFeY/JjkFPfmTzJvMOKIEi3EqxjjipDe/7ywMwqvneZX+qWAdybwg6yD/yOxz2L5MJnUEZhBMXr3BU1U0UvKy0Zw4xf3zBJ/LsMv+aYa62Gr6syckFSxtsayP/RKc+FtAAozZ53BNRHTjKtcKCdkH8vpZ9xKN+1tZpUMiyfDEZ2a5H+xexMOSLLzCnyUdRA1N51N3bSYsxU0ea9LHtpzKvivnGu9MsAsdToBj8R2Bj6wHZNixo0SdP6NqmRR6aM6cN4uoWP/jsGOm50o1Mf3aY+uM5ELunbWXlvVQc0yjWCbUgIleiYtG3ZD7bj2MsgB/BvG2oOu7nzMrI6KOlv1cDytilaziQlL+oC2Ap+9ThP/czYO4nudPclCmbmNUTGPepKprb8lVXWQXu5YrmUbzvnE1IpuhN2kUxIG39PvVp8aiefy3pNdZAOLnekJAzQCfa7hd08aVn1Oj8xy8JBK+O5b2J4LJ4ULvBkXpzfPWQOJcTFo3L+UhJ6Oih3fx5gv38qznioFW+0bytVF1lQaflvVNjxG+zi+pHNWYff1DBWPqN0rNjoSUYg26efeBSSptUX95kprcbWC5nziPADaVpZgxRhLr5RjPrbyDs=
   - secure: ACRFG9mZOBhXYpMjMiwVwzv1Vv8mGgZCL/qC0a5x5X/qF7USyBTG45wwV8BnDQQGDgaZAB1WMHaYfZfXMdivXZdC2lVBvLZ25mJDw0rpJAPvjKSbtq4RMNJl9glzEoyjSiODqGKjkOWcpxqr10zAjDPuLlUua1kLhe0NR6ozwzj63/qeElo5wzGKXsrIE4P0DhCU3qWm8p3glU/ObAkufWo6xh7mgG1aNXIJMYwXXQujUs99i2NWzZLK6pKlbP9eIh9A33AgLJtwfuIMO4gJV8dDUn0OnAmwF9kXajscUGshsT6ktVeLb5Bq/dx9HBdAGREYan4Imfwd2o9d+Vb/UBqQHBix4g2iuHuxWICWF8HSIeGdBVE2n6XVfc/27qMx+cIQCAv3/IFtN1xJQcA58SyKM8NSRkODfRgWMiYjxPyLAKfrs9wpIATVL1Mnow7UNqxkROvVatYOW7ZkJ19K7/mEZW6fUIbzA8Jt+3TPJH0IYeLZ2r6to5pQ68jSCXlLOgmNpj21G0dOfbJj25iE62E0GT9Qb/+kAerZT2xb/DNo4l0Jn97SlMPECCCDmDFvGlkscD/ZRGGxN/RTZWoPmLbAnZnbO2SiXG9HF0ywhBpUExE2/+cVCp3DrvdHdN6GcYbDgAlyiOOvmadah/u/wPtrJ9zoVFH3j4K7uklPi8c=
-script:
-- docker build --target test --tag todo-app-test .
-- docker run todo-app-test tests
-- docker run -e TRELLO_BOARD_ID -e TRELLO_API_KEY -e TRELLO_SERVER_TOKEN todo-app-test tests_e2e
-- docker build --target prod --tag waormd/todo-app-prod:$TRAVIS_COMMIT --tag waormd/todo-app-prod:latest .
-- echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
-- docker push waormd/todo-app-prod:$TRAVIS_COMMIT
-- docker push waormd/todo-app-prod:latest
+
+jobs:
+    include:
+        - stage: "Build test image"
+          script: docker build --target test --tag todo-app-test .
+        - stage: "Tests"
+          name: "Unit"
+          script: docker run todo-app-test tests
+        - script: docker run -e TRELLO_BOARD_ID -e TRELLO_API_KEY -e TRELLO_SERVER_TOKEN todo-app-test tests_e2e
+          name: "e2e"
+        - stage: "Build prod image"
+          script: docker build --target prod --tag waormd/todo-app-prod:$TRAVIS_COMMIT --tag waormd/todo-app-prod:latest .
+          if: branch = main
+        - stage: "Push prod image"
+          script: echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin && \
+                  docker push waormd/todo-app-prod:$TRAVIS_COMMIT && \
+                  docker push waormd/todo-app-prod:latest
+          if: branch = main
+
