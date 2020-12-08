@@ -48,6 +48,12 @@ Now visit [`http://localhost:5000/`](http://localhost:5000/) in your web browser
 - TRELLO_API_KEY: string
 - TRELLO_SERVER_TOKEN: string 
 
+
+Set environment variable before building images
+```
+PORT=5000
+```
+
 The Trello board must contain lists of "Todo" "In progress" and "Done"
 
 Please install geckodriver and place it on your PATH for selenium tests to work: https://github.com/mozilla/geckodriver/releases
@@ -82,7 +88,7 @@ docker run -p 5000:5000/tcp -d --env-file .env waormd/todo-app-prod
 Unit
 ```
 docker build --target test --tag waormd/todo-app-test . && \
-docker run waormd/todo-app-test tests
+docker run --env-file .env waormd/todo-app-test tests
 ```
 
 e2e

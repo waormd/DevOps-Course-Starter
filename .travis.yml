@@ -13,8 +13,8 @@ jobs:
     script: docker build --target test --tag todo-app-test .
   - stage: Tests
     name: Unit
-    script: docker run -e PORT todo-app-test tests
-  - script: docker run -e TRELLO_BOARD_ID -e TRELLO_API_KEY -e TRELLO_SERVER_TOKEN -e PORT todo-app-test tests_e2e
+    script: docker run todo-app-test tests
+  - script: docker run -e TRELLO_BOARD_ID -e TRELLO_API_KEY -e TRELLO_SERVER_TOKEN todo-app-test tests_e2e
     name: e2e
   - stage: Build prod image
     name: Build prod image
