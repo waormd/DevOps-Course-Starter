@@ -9,6 +9,7 @@ env:
 jobs:
     include:
         - stage: "Build test image"
+          name: "Build test image"
           script: docker build --target test --tag todo-app-test .
         - stage: "Tests"
           name: "Unit"
@@ -16,9 +17,11 @@ jobs:
         - script: docker run -e TRELLO_BOARD_ID -e TRELLO_API_KEY -e TRELLO_SERVER_TOKEN todo-app-test tests_e2e
           name: "e2e"
         - stage: "Build prod image"
+          name: "Build prod image"
           script: docker build --target prod --tag waormd/todo-app-prod:$TRAVIS_COMMIT --tag waormd/todo-app-prod:latest .
           if: branch = master
         - stage: "Push prod image"
+          name: "Push prod image"
           script: echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin && \
                   docker push waormd/todo-app-prod:$TRAVIS_COMMIT && \
                   docker push waormd/todo-app-prod:latest
